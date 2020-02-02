@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1e790d4b3afe447bffb66bb8967e31, type: 3}
+  m_Name: Orc
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: -2432090755550338912, guid: 905400ee3e413614da30af8614ec3ea0,
+    type: 3}
+  NameEnemy: Orc
+  HealthEnemy: 120
+  AttackEnemy: 5
+  SpeedEnemy: 10
+  AttackSpeedEnemy: 2
+  MaterialEnemy: {fileID: 2100000, guid: 82ff54e237845714b99ae681e933c2cf, type: 2}
+  AnimatorEnemy: {fileID: 0}

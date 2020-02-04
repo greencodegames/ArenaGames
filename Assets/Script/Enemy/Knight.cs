@@ -10,6 +10,8 @@ public class Knight : IEnemy
 	public float _attackSpeed;
 	public GameObject player;
 
+	public Animator anim;
+
 	void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -18,13 +20,20 @@ public class Knight : IEnemy
 
 	public void Start()
 	{
-		
+		anim = GetComponent<Animator>();
 	}
 
 	public void Update()
 	{
-		
 		Move(player);
 		Death();		
+	}
+
+	public void OnTriggerStay(Collider other)
+	{
+		if(other.tag == "Player")
+		{
+			Attack(player);
+		}
 	}
 }

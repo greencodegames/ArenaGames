@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{65E1914B-6DF7-0436-6A91-653F2DE13AEE}</ProjectGuid>
+    <ProjectGuid>{D465A3A5-CEDA-EEE7-92CA-DFA98795BBB6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,40 +64,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\CameraControll.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\EnemyData.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\IEnemy.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\Knight.cs" />
-    <Compile Include="Assets\Script\Enemy\Scripts\Orc.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyData.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Script\Enemy\IEnemy.cs" />
+    <Compile Include="Assets\Script\Enemy\Knight.cs" />
+    <Compile Include="Assets\Script\Enemy\Orc.cs" />
     <Compile Include="Assets\Script\MobileController.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Unity/UnityProject/ArenaGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/GitHub/Games/ArenaGames/TheStoryOfPipka/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/Unity/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
-	public void OnTriggerEnter(Collider other)
+	public void OnTriggerStay(Collider other)
 	{
 		if(other.tag == "Player")
 		{
@@ -81,7 +81,6 @@ public class Enemy : MonoBehaviour
 
 	private void MakeDamage()
 	{
-		player.GetComponent<PlayerController>().TakeDamage(Attack);
 		//Debug.Log("Получен урон! " + Attack + "\nОт " + gameObject.name);
 	}
 

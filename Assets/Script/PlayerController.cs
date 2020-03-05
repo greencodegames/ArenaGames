@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 		timeBtwAttack = attackSpeed;
 		ch_controller = GetComponent<CharacterController>();
 		ch_animator = GetComponent<Animator>();
-		mController = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileController>();
+		//mController = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileController>();
     }
 
 	void Update()
@@ -39,10 +39,18 @@ public class PlayerController : MonoBehaviour
 	
 	public void CharacterMove()
 	{
-		
+
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			Debug.Log("1123");
 			moveVector = Vector3.zero;
-			moveVector.x = mController.Horizontal() * speedMove;
-			moveVector.z = mController.Vertical() * speedMove;
+			ch_animator.SetBool("isRifting", true);
+		}
+		ch_animator.SetBool("isRifting", false);
+
+			moveVector = Vector3.zero;
+			moveVector.x = Input.GetAxis("Horizontal") * speedMove;
+			moveVector.z = Input.GetAxis("Vertical") * speedMove;
 
 			if (Vector3.Angle(Vector3.forward, moveVector) > 1f || Vector3.Angle(Vector3.forward, moveVector) == 0)
 			{
@@ -55,6 +63,9 @@ public class PlayerController : MonoBehaviour
 
 			if(moveVector.magnitude == 0)
 				ch_animator.SetBool("isRunning", false);
+
+			
+			
 
 	}
 

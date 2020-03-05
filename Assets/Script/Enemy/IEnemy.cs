@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class IEnemy : MonoBehaviour
 {
@@ -17,9 +18,10 @@ public class IEnemy : MonoBehaviour
 		Damage = _Damage;
 		attackSpeed = _attackSpeed;
 	}
-	public void Move(GameObject player)
+	public void Move(GameObject player, NavMeshAgent enemy)
 	{
-		if (player)
+		enemy.destination = player.transform.position;
+		/*if (player)
 		{
 			var Vector = player.transform.position - transform.position;
 			if (Vector.magnitude > 1.0f)
@@ -31,7 +33,7 @@ public class IEnemy : MonoBehaviour
 		else
 		{
 
-		}
+		}*/
 	}
 
 	public void Death()

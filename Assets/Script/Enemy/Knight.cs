@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Knight : IEnemy
 {
@@ -12,10 +13,14 @@ public class Knight : IEnemy
 
 	public Animator anim;
 
+	public NavMeshAgent enemy;
+
 	void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		Awake(_Health,_Speed,_Damage,_attackSpeed);
+		enemy = GetComponent<NavMeshAgent>();
+		enemy.speed = _Speed;
 	}
 
 	public void Start()
@@ -25,7 +30,7 @@ public class Knight : IEnemy
 
 	public void Update()
 	{
-		Move(player);
+		Move(player,enemy);
 		Death();		
 	}
 

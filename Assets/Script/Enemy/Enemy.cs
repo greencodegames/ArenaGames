@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private EnemyData data;
 	[SerializeField] private GameObject player;
 
-
 	public int[,] text;
 
 	[SerializeField] public List<List<int>> counter;
     public void Init(EnemyData ldata)
     {
+		
         data = ldata;
         GetComponent<MeshFilter>().mesh = data.MainMesh;
         GetComponent<MeshRenderer>().material = data.MaterialE;
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveEnemy();
+        //MoveEnemy();
         EnemyDie();
     }
 

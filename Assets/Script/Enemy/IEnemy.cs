@@ -5,47 +5,56 @@ using UnityEngine.AI;
 
 public class IEnemy : MonoBehaviour
 {
-	public float Health { get; set; }
-	public float Speed { get; set; }
-	public float Damage { get; set; }
-	public float attackSpeed { get; set; }
+	public float Health;
+	public float maxHealth;
+	public float Speed;
+	public float Damage;
+	public float attackSpeed;
 	private float timeBtwAttack;
+	private GameObject player;
+	float distance; 
 
-	protected void Awake(float _Health, float _Speed, float _Damage, float _attackSpeed)
+	private void Awake()
 	{
-		Health = _Health;
-		Speed = _Speed;
-		Damage = _Damage;
-		attackSpeed = _attackSpeed;
+		player = GameObject.FindGameObjectWithTag("Player");
+		
 	}
-	public void Move(GameObject player, NavMeshAgent enemy)
+
+	private void Start()
 	{
-		enemy.destination = player.transform.position;
-		/*if (player)
+		maxHealth = Health;
+	}
+
+	public void Move(NavMeshAgent enemy)
+	{
+		float distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+		if (distance >= 1.5)
 		{
-			var Vector = player.transform.position - transform.position;
-			if (Vector.magnitude > 1.0f)
-			{
-				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector), 1);
-				transform.position += transform.forward * Speed * Time.fixedDeltaTime;
-			}
+			enemy.enabled = true;
+			enemy.destination = player.transform.position;
 		}
-		else
-		{
 
-		}*/
+		if (distance <= 1.5)
+		{
+			transform.LookAt(player.transform);
+			enemy.enabled = false;
+		}
 	}
 
-	public void Death()
+	public void Death(Transform tr, GameObject gold)
 	{
+		int t = Random.Range(1, 5);
 		if (Health <= 0)
 		{
+			for (int i = 0; i < t; i++)
+				Instantiate(gold, tr.transform.position, Quaternion.identity);
+
 			Destroy(gameObject);
 			Debug.Log("The enemy is dead " + this.name);
 		}
 	}
 
-	public void Attack(GameObject player)
+	public void Attack()
 	{
 		if (timeBtwAttack <= 0)
 		{
@@ -63,5 +72,13 @@ public class IEnemy : MonoBehaviour
 	public void TakeDamage(float _damage)
 	{
 		Health -= _damage;
+	}
+
+	public void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "Player")
+		{
+			Attack();
+		}
 	}
 }

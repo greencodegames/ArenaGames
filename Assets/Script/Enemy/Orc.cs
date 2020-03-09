@@ -5,31 +5,22 @@ using UnityEngine.AI;
 
 public class Orc : IEnemy
 {
-
-	public float _Health;
-	public float _Speed;
-	public float _Damage;
-	public float _attackSpeed;
-	public GameObject player;
-
-	public NavMeshAgent enemy;
-
-	void Awake()
-	{
-		player = GameObject.FindGameObjectWithTag("Player");
-		Awake(_Health, _Speed, _Damage, _attackSpeed);
-		
-	}
+	private IEnemy orc;
+	public Transform goldPosition;
+	public GameObject gold;
+	public NavMeshAgent enemyMesh;
 
 	public void Start()
 	{
-		
-
+		//anim = GetComponent<Animator>();
+		enemyMesh = GetComponent<NavMeshAgent>();
+		orc = GetComponent<IEnemy>();
+		enemyMesh.speed = orc.Speed;
 	}
 
 	public void Update()
 	{
-		Move(player,enemy);
-		Death();
+		orc.Move(enemyMesh);
+		orc.Death(goldPosition, gold);
 	}
 }

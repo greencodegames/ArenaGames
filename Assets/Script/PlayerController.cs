@@ -13,21 +13,28 @@ public class PlayerController : MonoBehaviour
 	public float attackSpeed;
 	private float timeBtwAttack;
 	public float attackRange;
+
 	public Transform attackPos;
 	public LayerMask whatIsEnemy;
 	public Collider2D[] enemiesToDamage;
+	public Text goldText;
+	public int gold = 0;
+	private Rigidbody _rb;
+
+	public Slider slider;
 
 	private Vector3 moveVector;
 
 	private CharacterController ch_controller;
 	private Animator ch_animator;
-	private MobileController mController;
     void Start()
     {
 		timeBtwAttack = attackSpeed;
 		ch_controller = GetComponent<CharacterController>();
 		ch_animator = GetComponent<Animator>();
-		//mController = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileController>();
+		_rb = GetComponent<Rigidbody>();
+		goldText.text = "Gold: " + gold;
+		slider.value = slider.maxValue = Health;
     }
 
 	void Update()
@@ -54,33 +61,25 @@ public class PlayerController : MonoBehaviour
 
 			if (Vector3.Angle(Vector3.forward, moveVector) > 1f || Vector3.Angle(Vector3.forward, moveVector) == 0)
 			{
-				ch_animator.SetBool("isRunning", true);
+				//ch_animator.SetBool("isRunning", true);
 				Vector3 dir = Vector3.RotateTowards(transform.forward, moveVector, speedMove, 0.0f);
 				transform.rotation = Quaternion.LookRotation(dir);
 			}
 		
 			ch_controller.Move(moveVector * Time.deltaTime);
 
-			if(moveVector.magnitude == 0)
-				ch_animator.SetBool("isRunning", false);
-
-			
-			
-
+			//if(moveVector.magnitude == 0)
+				//ch_animator.SetBool("isRunning", false);
 	}
 
 	public void TakeDamage(float lDamage)
 	{
 		Health -= lDamage;
-		HealthSlider.value -= lDamage;
+		slider.value -= lDamage;
 
 		if (Health <= 0f)
 		{
-			/*GameObject[] listOfEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(GameObject enemy in listOfEnemy)
-			{
-				enemy.GetComponent<Knight>().player = null;
-			}*/
+			GameObject[] listOfEnemy = GameObject.FindGameObjectsWithTag("Enemy");
 
 			Destroy(gameObject);
 		}
@@ -130,6 +129,16 @@ public class PlayerController : MonoBehaviour
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireCube(attackPos.position, new Vector3(attackRange,attackRange,1));
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if(other.tag == "Gold")
+		{
+			Destroy(other.gameObject);
+			gold++;
+			goldText.text = "Gold: " + gold;
+		}
 	}
 
 }

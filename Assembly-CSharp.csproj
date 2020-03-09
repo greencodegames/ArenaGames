@@ -63,10 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prefabs\Shop.cs" />
+    <Compile Include="Assets\Prefabs\ShopButton.cs" />
     <Compile Include="Assets\Script\CameraControll.cs" />
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyData.cs" />
     <Compile Include="Assets\Script\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Script\Enemy\HealthBarEnemy.cs" />
     <Compile Include="Assets\Script\Enemy\IEnemy.cs" />
     <Compile Include="Assets\Script\Enemy\Knight.cs" />
     <Compile Include="Assets\Script\Enemy\Orc.cs" />

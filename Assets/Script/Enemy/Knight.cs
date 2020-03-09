@@ -3,42 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Knight : IEnemy
+public class Knight : MonoBehaviour
 {
-	public float _Health;
-	public float _Speed;
-	public float _Damage;
-	public float _attackSpeed;
-	public GameObject player;
-
+	private IEnemy knight;
+	public Transform goldPosition;
+	public GameObject gold;
 	public Animator anim;
-
-	public NavMeshAgent enemy;
-
-	void Awake()
-	{
-		player = GameObject.FindGameObjectWithTag("Player");
-		Awake(_Health,_Speed,_Damage,_attackSpeed);
-		enemy = GetComponent<NavMeshAgent>();
-		enemy.speed = _Speed;
-	}
+	public NavMeshAgent enemyMesh;
 
 	public void Start()
 	{
 		anim = GetComponent<Animator>();
+		enemyMesh = GetComponent<NavMeshAgent>();
+		knight = GetComponent<IEnemy>();
+		enemyMesh.speed = knight.Speed;
 	}
 
 	public void Update()
 	{
-		Move(player,enemy);
-		Death();		
-	}
-
-	public void OnTriggerStay(Collider other)
-	{
-		if(other.tag == "Player")
-		{
-			Attack(player);
-		}
+		knight.Move(enemyMesh);
+		knight.Death(goldPosition, gold);
 	}
 }

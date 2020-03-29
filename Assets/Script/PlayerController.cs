@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 	public float speedMove;
 	public float damage;
 	public float attackSpeed;
+
+	public float Strength;
+	public float Agility;
+	public float Intelligence;
+
 	private float timeBtwAttack;
 	public float attackRange;
 
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
 	private CharacterController ch_controller;
 	private Animator ch_animator;
+
+	public List<Item> itemList;
     void Start()
     {
 		timeBtwAttack = attackSpeed;

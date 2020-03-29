@@ -14,13 +14,15 @@ public class Orc : IEnemy
 	{
 		//anim = GetComponent<Animator>();
 		enemyMesh = GetComponent<NavMeshAgent>();
-		orc = GetComponent<IEnemy>();
-		enemyMesh.speed = orc.Speed;
+		//orc = GetComponent<IEnemy>();
+		enemyMesh.speed = Speed;
 	}
 
 	public void Update()
 	{
-		orc.Move(enemyMesh);
-		orc.Death(goldPosition, gold);
+		Move(enemyMesh);
+		Death(goldPosition, gold);
+		//orc.Move(enemyMesh);
+		//orc.Death(goldPosition, gold);
 	}
 }

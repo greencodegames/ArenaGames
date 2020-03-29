@@ -6,34 +6,38 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
 	private Transform shopList;
-	private Transform shopItem;
+	public Transform shopItem;
+	private ItemBuy itemBuy;
+	private ShopLists shopLists;
 
 	private void Awake()
 	{
+		shopLists = GameObject.FindGameObjectWithTag("GameController").GetComponent<ShopLists>();
 		shopList = transform.Find("Shop");
-		shopItem = shopList.Find("ItemButton");
+		//shopItem = shopList.Find("ItemButton");
 		shopItem.gameObject.SetActive(false);
 	}
 
 	private void Start()
 	{
-		CreateItemButton("Armor 1", 100, 0);
-		CreateItemButton("Armor 2", 150, 1);
-		CreateItemButton("Sword 1", 70, 2);
-		CreateItemButton("Sword 2", 120, 3);
+		for (int i = 0; i < shopLists.MainShop.Count; i++)
+		{
+			CreateItemButton(shopLists.MainShop[i], i);
+		}
 	}
 
-	private void CreateItemButton(/*Sprite itemSprite,*/ string itemName, int itemCost, int positionIndex)
+	private void CreateItemButton(GameObject itemObject, int i)
 	{
+		var _item = itemObject.GetComponent<Item>();
 		Transform shopItemTransform = Instantiate(shopItem, shopList);
 		RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
 
 		float shopItemHeight = 80f;
-		shopItemRectTransform.anchoredPosition = new Vector2(0, -shopItemHeight * positionIndex);
-
-		//shopItemTransform.Find("itemImage").GetComponent<Image>().sprite = itemSprite;
-		shopItemTransform.Find("itemName").GetComponent<Text>().text = itemName;
-		shopItemTransform.Find("goldText").GetComponent<Text>().text = itemCost.ToString();
+		shopItemRectTransform.anchoredPosition = new Vector2(0, -shopItemHeight * i);		
+		shopItemTransform.GetComponent<ItemBuy>()._item = _item;
+		shopItemTransform.gameObject.name = _item.itemSO.ItemName;
+		shopItemTransform.Find("itemName").GetComponent<Text>().text = _item.itemSO.ItemName;
+		shopItemTransform.Find("goldText").GetComponent<Text>().text = _item.itemSO.ItemCost.ToString();
 		shopItemTransform.gameObject.SetActive(true);
 	}
 }
